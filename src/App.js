@@ -6,9 +6,9 @@ import TodosList from './components/TodosList';
 
 const App =()=> {
 // useState hooks enable the component to keep track of and update the input value and the list of todos as the component renders and interacts with the user.
-
+  const initialState =JSON.parse(localStorage.getItem("todos")) || [];
   const [input, setInput] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(initialState);
   const [editTodo, setEditTodo] = useState(null);
   return (
     <div className="container">

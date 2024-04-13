@@ -1,11 +1,10 @@
 import React from 'react';
 
-
-
 const TodosList = ({ todos, setTodos , setEditTodo}) => {
     const handleDelete = (id) => {
         setTodos(todos.filter((todo) => todo.id !== id));
     };
+
 
     const handleComplete = (id) => {
         setTodos(
@@ -18,10 +17,13 @@ const TodosList = ({ todos, setTodos , setEditTodo}) => {
         );
     };
 
-    const handleEdit = (id) => {
-        // Implement your edit logic here
-        console.log("Edit button clicked for todo with id:", id);
+
+    const handleEdit = ({id}) => {
+        const findTodo = todos.find((todo) => todo.id === id);
+        setEditTodo(findTodo);
     };
+
+
 
     return (
         <div>
@@ -30,14 +32,14 @@ const TodosList = ({ todos, setTodos , setEditTodo}) => {
                     <input
                         type="text"
                         value={todo.title}
-                        className='list'
+                        className={'list ${todo.completed ? "completed": ""}'}
                         onChange={(event) => event.preventDefault()} />
                     <div>
                         <button className='button-complete task-button' onClick={() => handleComplete(todo.id)}>
                             <i className='fa fa-check-circle' />
                         </button>
                         <button className='button-edit task-button' onClick={() => handleEdit(todo.id)}>
-                            <i className='fa faEdit' />
+                            <i className='fa fa-edit' />
                         </button>
                         <button className='button-delete task-button' onClick={() => handleDelete(todo.id)}>
                             <i className='fa fa-trash' />
