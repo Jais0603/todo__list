@@ -4,12 +4,12 @@ import Form from './components/Form';
 import Header from './components/Header';
 import TodosList from './components/TodosList';
 
-
 const App =()=> {
 // useState hooks enable the component to keep track of and update the input value and the list of todos as the component renders and interacts with the user.
 
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
+  const [editTodo, setEditTodo] = useState(null);
   return (
     <div className="container">
       <div className='app-wrapper'>
@@ -23,11 +23,15 @@ const App =()=> {
           setInput={setInput}
           todos={todos}
           setTodos={setTodos}
-          
+          editTodo={editTodo}
+          setEditTodo={setEditTodo}
           />
         </div>
         <div>
-          <TodosList todos ={todos} setTodos={setTodos}/>
+          <TodosList 
+          todos ={todos} 
+          setTodos={setTodos} 
+          setEditTodo={setEditTodo}/>
         </div>
       </div>
     </div>
