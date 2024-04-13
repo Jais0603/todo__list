@@ -16,6 +16,9 @@ const App =()=> {
   useEffect (() =>{
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos])
+
+
+  
   return (
     <div className="container">
       <div className='app-wrapper'>

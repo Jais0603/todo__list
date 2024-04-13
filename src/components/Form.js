@@ -46,6 +46,10 @@ const Form = ({input, setInput, todos, setTodos, editTodo, setEditTodo}) => {
         className='task-input'
         value={input}
         required onChange={onInputChange}/>
+
+
+
+        {/* the editTodo? ok:add will change the the button to ok when we click on edit button */}
         <button className='button-add' type='submit'>
             {editTodo ? "OK" : "Add"}
         </button>
