@@ -5,12 +5,12 @@ import { v4 as uuidv4} from "uuid";
 
 const Form = ({input, setInput, todos, setTodos, editTodo, setEditTodo}) => {
 
-    const updateTodo =(title, id, completed) =>{
-        const newTodo =todos.map((todo)=>
-            todo.id === id ? {title, id, completed}: todo
-        )
-        setTodos(newTodo);
-        setEditTodo("");
+    const updateTodo = (title, id, completed) => {
+        const newTodos = todos.map(todo =>
+            todo.id === id ? { ...todo, title, completed } : todo
+        );
+        setTodos(newTodos);
+        setEditTodo(null);
     };
     useEffect(()=>{
         if(editTodo){
@@ -55,3 +55,4 @@ const Form = ({input, setInput, todos, setTodos, editTodo, setEditTodo}) => {
 }
 
 export default Form
+
