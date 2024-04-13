@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
+import Form from './components/Form';
+import Header from './components/Header';
+import TodosList from './components/TodosList';
 
-function App() {
+
+const App =()=> {
+// useState hooks enable the component to keep track of and update the input value and the list of todos as the component renders and interacts with the user.
+
+  const [input, setInput] = useState("");
+  const [todos, setTodos] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className='app-wrapper'>
+        <div>
+      <Header/>
+        </div>
+        <div>
+{/* this line of code passes down the state variables and their respective update functions 'setInput' and 'setTodods' as props to child component form. */}
+          <Form 
+          input ={input}
+          setInput={setInput}
+          todos={todos}
+          setTodos={setTodos}
+          
+          />
+        </div>
+        <div>
+          <TodosList todos ={todos} setTodos={setTodos}/>
+        </div>
+      </div>
     </div>
   );
 }
